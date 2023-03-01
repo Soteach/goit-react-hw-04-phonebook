@@ -1,22 +1,22 @@
 import PropTypes from 'prop-types';
-import './Filter.css';
+import {
+  Input,
+  Label,
+  Container,
+} from 'components/ContactForm/ContactForm.styled';
 
-export const Filter = ({ changeFilter }) => {
+export const Filter = ({ filterValue, onValueChange }) => {
   return (
-    <label className="FilterLabel" htmlFor="">
-      Find contacts by name
-      <input
-        className="FilterInput"
-        type="text"
-        name="name"
-        onChange={e => {
-          changeFilter(e.currentTarget.value);
-        }}
-      />
-    </label>
+    <Container>
+      <Label htmlFor="">
+        Find contact by name
+        <Input type="text" value={filterValue} onChange={onValueChange} />
+      </Label>
+    </Container>
   );
 };
 
 Filter.propTypes = {
-  changeFilter: PropTypes.func.isRequired,
+  filterValue: PropTypes.string.isRequired,
+  onValueChange: PropTypes.func.isRequired,
 };
